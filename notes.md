@@ -74,6 +74,12 @@ where should floors be stored? Should they be stored in the people? the building
 
 Should people store what floor they are on? or if they are on an elevator or not?
 
-## Implementation 3: People will not store their location. Their location will be based on where they are
+## Implementation 3: People will not store their location. Their location will be based on where they are. This will allow for only 1 "point of truth" so there cannot be an instance of someone being in 2 places at once.
+
+
+## Implementation 4: each building will have a list of elevators, called "shafts" that will store the elevator objects.
+
+## Implementation 5: each elevator will store a list of people that are inside the elevator.
+--note: due to people's location being based on the elevator position it needs to be made sure that people are removed from the correct list. If they are not removed from the floor when they get on an elevator for example then there might be 2 people. They will have multiplied!
 
 
