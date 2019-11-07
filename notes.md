@@ -8,6 +8,7 @@ reasoning:
 ## Assumption 1: There are no "up" or "down" request buttons. If an elevator is going up and 1 floor below an elevator is requested and there are no closer elevators then that elevator will reverse and pick up the person
 reasoning:
  - This is because the problem statement does not specify that there are any direction request buttons. The rules on new passengers arriving does say so I am choosing the simpiler option to have only request buttons and no "directional" request buttons
+ - The problems state that there is rules for picking up passengers but not for how the passengers are supposed to be dropped off
 
 ## Assumption 2: The stops are determined by a que, if someone needs to go to a floor one above, then they need to wait till all the current people have gotten off. They might be waiting for a while. This logic could be changed in a 'sort fuction' but for now will be a que.
 reasoning:
