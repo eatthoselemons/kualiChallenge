@@ -86,3 +86,5 @@ Should people store what floor they are on? or if they are on an elevator or not
 --note: due to people's location being based on the elevator position it needs to be made sure that people are removed from the correct list. If they are not removed from the floor when they get on an elevator for example then there might be 2 people. They will have multiplied!
 
 
+## Implementation flaw 1:
+ - Since there is no check when a destination is added for duplicates someone might get off at a floor but their destination request will still be in the elevator destinations que

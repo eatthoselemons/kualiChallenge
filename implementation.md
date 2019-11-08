@@ -18,6 +18,7 @@ elevator objects:
  - list of passengers: passengers :: [People]
  - int of "trips": trips :: int
  - active elevator: active :: boolean
+ - current floor :: int
 
 
 event loop:

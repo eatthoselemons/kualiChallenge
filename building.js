@@ -11,11 +11,11 @@ class Building {
     }
   }
   
-  get numberOfFloors(){
+  getNumberOfFloors(){
     return this._floors.length;
   }
 
-  get numberOfShafts(){
+  getNumberOfShafts(){
     return this._shafts.length;
   }
 
