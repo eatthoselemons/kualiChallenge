@@ -10,6 +10,7 @@ reasoning:
  - This is because the problem statement does not specify that there are any direction request buttons. The rules on new passengers arriving does say so I am choosing the simpiler option to have only request buttons and no "directional" request buttons
  - The problems state that there is rules for picking up passengers but not for how the passengers are supposed to be dropped off
 
+
 ## Assumption 2: The stops are determined by a que, if someone needs to go to a floor one above, then they need to wait till all the current people have gotten off. They might be waiting for a while. This logic could be changed in a 'sort fuction' but for now will be a que.
 reasoning:
  - This makes things easier for the programming assignment. This is not optimal at all however it does simplify the things for the programming assignment and makes sure that there is not one person who is stuck the whole time waiting for the elevator to get to their floor.
@@ -21,6 +22,7 @@ reasoning:
 ## Assumption 4: At the end of a trip the elevator will stop in its place. It will not go to the top or bottom floor with no passengers. It will also not finish its "routes" once stopped. People will have to exit and try other elevators.
 
 ## Assumption 5: There is no limit to how many people can be in an elevator. This is unlike real life however the problem does not make this a requirement so I will ignore that case for now
+
 
 
 Based on the problem we are trying to have a state machine. We need to keep the state of every elevator and passenger to calculate the path.
