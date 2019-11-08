@@ -22,16 +22,6 @@ elevator objects:
 
 
 event loop:
-  - for elevators
-    - if elevator active
-      - if passenger elevator destination
-        - trips counter +1
-        - passengers - peopleDisembarking
-        - passengers + peopleEmbarking
-        - if trips > 100
-          - set active to false
-      - else
-        - move to next destination
   - for floors
     - if people
       - for people with "requested elevators" = false
@@ -44,4 +34,13 @@ event loop:
             - select unocupied elevators
               - select closest elevator (elevators on the same floor will have distance = 0)
                 - change that elevators current destination to the requesters floor. (since the que will be empty just set the que to that floor
-
+  - for elevators
+    - if elevator active
+      - if passenger elevator destination
+        - trips counter +1
+        - passengers - peopleDisembarking
+        - passengers + peopleEmbarking
+        - if trips > 100
+          - set active to false
+      - else
+        - move to next destination

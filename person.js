@@ -4,6 +4,7 @@ class Person {
     this.id = id;
     this._desiredFloor = desiredFloor; //:: int
     this._requestedElevator = False; //:: boolean
+    this._hasElevator = false; //:: boolean
   }
 
   set requestedElevator(value){
@@ -12,5 +13,22 @@ class Person {
 
   get requestedElevator(){
     return this._requestedElevator;
+  }
+
+  set elevator(elevator){
+    this._elevator = elevator;
+  }
+
+  get elevator(){
+    return this._elevator;
+    this._hasElevator = true;
+  }
+
+  set hasElevator(value){
+    this._hasElevator = value;
+  }
+
+  get hasElevator(){
+    return this._hasElevator;
   }
 }

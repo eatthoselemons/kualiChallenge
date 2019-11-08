@@ -1,6 +1,7 @@
 class elevator {
   //constructor :: id -> void
-  constructor(){
+  constructor(id){
+    this.id = id;
     this._destinations = []; // :: [int]
     this._passengers = []; // :: [passengers]
     this._trips = 0; // :: int
@@ -13,9 +14,17 @@ class elevator {
   }
 
   removePassengersForFloor(floor){
-    for(let i = 0; i < this._passengers.length;i++){
-      if (this._passengers[i].floor == floor){
+    for (let i of this._passengers){
+      if (i.floor == floor){
         this._passengers.splice(i, 1);
+      }
+    }
+  }
+
+  addPassengersForFloor(people){
+    for (let i of people){
+      if (people.elevator == this.id){
+        this._passengers.push(i);
       }
     }
   }
@@ -24,26 +33,26 @@ class elevator {
     this._destinations.push(destination);
   }
 
-  addPickup(pickup){
-    //add to first of this._destinations
+  addPickup(floor){
+    this._destinations.unshift(floor.id);
   }
 
-  removeDestination(){
-    //remove the current floor from this._destinations
+  atDestination(){
+    this._destination.splice(0,1);
   }
 
-  onTheWay(passenger){
-    if (betweenFloors(passenger.floor)){
-      addPickup(passenger.floor);
-    }
-  }
-
-
-  betweenFloors(floor){
-    if (floor > this._currentFloor && floor < this._destinations[0]){
+  onTheWay(floor){
+    if (betweenFloors(floor)){
       return true;
     }
-    if (floor < this._currentFloor && floor > this._destinations[0]){
+    return false;
+  }
+
+  betweenFloors(floor){
+    if (floor.id > this._currentFloor && floor.id < this._destinations[0]){
+      return true;
+    }
+    if (floor.id < this._currentFloor && floor.id > this._destinations[0]){
       return true;
     }
     return false;
@@ -66,6 +75,14 @@ class elevator {
     return this._active;
   }
 
+  isActive(){
+    return this._active;
+  }
+
+  get currentFloor(){
+    return this._currentFloor;
+  }
+
   set destinations(destinations){
     this._destinations = destinations;
   }
@@ -78,7 +95,37 @@ class elevator {
     this._trips = trips;
   }
 
+  addTrip(){
+    this._trips = this._trips + 1;
+  }
+
   set active(active){
     this._active = active;
   }
+
+  set currentFloor(floor){
+    this._currentFloor = floor;
+  }
+
+  needsService(){
+    this._active = false;
+  }
+
+  moveUp(){
+      this._currentFloor = this._currentFloor + 1;
+  }
+
+  moveDown(){
+      this._currentFloor = this._currentFloor - 1;
+  }
+
+  move(){
+    if(this._destinations[0] > this._currentFloor){
+      moveUp();
+    }
+    else{
+      moveDown();
+    }
+  }
 }
+
