@@ -1,13 +1,18 @@
+var Elevator = require('./elevator.js');
+var Floor = require('./floor.js');
+var Person = require('./person.js');
+
+
 class Building {
   // constructor :: id -> int -> int -> void
   constructor(id, floors, elevators){
     this._floors = []; // :: [person]
-    this._elevators = []; // :: [shaft]
+    this._elevators = []; // :: [elevator]
     for (let i = 0; i < floors;i++){
-      this._floors.push(new floor(i));
+      this._floors.push(new Floor(i));
     }
-    for (let i = 0; i < elevators: i++){
-      this._elevators.push(new Shaft);
+    for (let i = 0; i < elevators; i++){
+      this._elevators.push(new Elevator(i));
     }
   }
   
@@ -25,7 +30,7 @@ class Building {
     return this._floors.length;
   }
 
-  getNumberOfShafts(){
+  getNumberOfElevators(){
     return this._elevators.length;
   }
 

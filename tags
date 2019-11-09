@@ -12,10 +12,14 @@ Assumption 3: A "trip" is a stop. So each stop will count. Ie any time someone g
 Assumption 4: At the end of a trip the elevator will stop in its place. It will not go to the top or bottom floor with no passengers. It will also not finish its "routes" once stopped. People will have to exit and try other elevators.	notes.md	/^## Assumption 4: At the end of a trip the elevator will stop in its place. It will not go to the/;"	s
 Assumption 5: There is no limit to how many people can be in an elevator. This is unlike real life however the problem does not make this a requirement so I will ignore that case for now	notes.md	/^## Assumption 5: There is no limit to how many people can be in an elevator. This is unlike real/;"	s
 Building	building.js	/^class Building {$/;"	c
+Building	eventLoop.js	/^var Building = require('.\/building.js');$/;"	v
 Design decision 0: The system will be controlled via an event loop	notes.md	/^## Design decision 0: The system will be controlled via an event loop$/;"	s
 Design decision 1: Each cycle an elevator will be able to move 1 floor.	notes.md	/^## Design decision 1: Each cycle an elevator will be able to move 1 floor.$/;"	s
 Design decision 2: Each elevator can move to every floor	notes.md	/^## Design decision 2: Each elevator can move to every floor$/;"	s
 Design decision 3: An elevator will take 2 "cycles" when it has reached a desired floor.	notes.md	/^## Design decision 3: An elevator will take 2 "cycles" when it has reached a desired floor.$/;"	s
+Elevator	building.js	/^var Elevator = require('.\/elevator.js');$/;"	v
+EventLoop	main.js	/^var EventLoop = require('.\/eventLoop.js');$/;"	v
+Floor	building.js	/^var Floor = require('.\/floor.js');$/;"	v
 Implementation 0 So elevators store a list of stop locations of their passengers. Check if the current floor matches any stops and then let those passengers with that stop get off. This will mean that each passenger will need to have a destination, however that will be added when they get on the elevator and only used to see if they should get off.	notes.md	/^## Implementation 0 So elevators store a list of stop locations of their passengers. Check if th/;"	s
 Implementation 1: Each floor will be stored in a "building" each floor will be a list, and will contain the people wishing to get on an elevator, the people who got off the elevator and are done will not be stored. People who get off due to an elevator service stop will just get added to the floor list of people who's destination is another floor, the list of people wanting to get on an elevator.	notes.md	/^## Implementation 1: Each floor will be stored in a "building" each floor will be a list, and wi/;"	s
 Implementation 2: The elevators and the floors will be stored in a "building" This way you can split up elevators and floors anyway you want. It would be possible to have the "speed" elevators from before by putting buildings inside of buildings. ie there are 4 "speed stops" in a building so each floor would be a "building" and have its own elevators. It is more extensible this way.	notes.md	/^## Implementation 2: The elevators and the floors will be stored in a "building" This way you ca/;"	s
@@ -23,6 +27,7 @@ Implementation 3: People will not store their location. Their location will be b
 Implementation 4: each building will have a list of elevators, called "shafts" that will store the elevator objects.	notes.md	/^## Implementation 4: each building will have a list of elevators, called "shafts" that will stor/;"	s
 Implementation 5: each elevator will store a list of people that are inside the elevator.	notes.md	/^## Implementation 5: each elevator will store a list of people that are inside the elevator.$/;"	s
 Implementation flaw 1:	notes.md	/^## Implementation flaw 1:$/;"	s
+Person	building.js	/^var Person = require('.\/person.js');$/;"	v
 Person	person.js	/^class Person {$/;"	c
 addDestination	elevator.js	/^  addDestination(destination){$/;"	m	class:elevator
 addPassenger	elevator.js	/^  addPassenger(passenger){$/;"	m	class:elevator
@@ -36,18 +41,18 @@ closestElevator	building.js	/^    let closestElevator;$/;"	v
 closestElevatorDistance	building.js	/^    let closestElevatorDistance = 99999999999;$/;"	v
 constructor	building.js	/^  constructor(id, floors, elevators){$/;"	m	class:Building
 constructor	elevator.js	/^  constructor(id){$/;"	m	class:elevator
-constructor	eventloop.js	/^  constructor(id, floors, shafts){$/;"	m	class:eventLoop
+constructor	eventLoop.js	/^  constructor(id, floors, elevators){$/;"	m	class:eventLoop
 constructor	floor.js	/^  constructor(id, floorNumber){$/;"	m	class:floor
 constructor	person.js	/^  constructor(id, desiredFloor){$/;"	m	class:Person
-displayCurrentBuildingState	eventloop.js	/^  displayCurrentBuildingState(building){$/;"	m	class:eventLoop
-dropOffOrMove	eventloop.js	/^  dropOffOrMove(elevator){$/;"	m	class:eventLoop
+displayCurrentBuildingState	eventLoop.js	/^  displayCurrentBuildingState(building){$/;"	m	class:eventLoop
+dropOffOrMove	eventLoop.js	/^  dropOffOrMove(elevator){$/;"	m	class:eventLoop
 elevator	elevator.js	/^class elevator {$/;"	c
-eventLoop	eventloop.js	/^class eventLoop {$/;"	c
+eventLoop	eventLoop.js	/^class eventLoop {$/;"	c
 floor	floor.js	/^class floor {$/;"	c
+getNumberOfElevators	building.js	/^  getNumberOfElevators(){$/;"	m	class:Building
 getNumberOfFloors	building.js	/^  getNumberOfFloors(){$/;"	m	class:Building
-getNumberOfShafts	building.js	/^  getNumberOfShafts(){$/;"	m	class:Building
-next	eventloop.js	/^  next(displayState){$/;"	m	class:eventLoop
+next	eventLoop.js	/^  next(displayState){$/;"	m	class:eventLoop
 onTheWay	elevator.js	/^  onTheWay(floor){$/;"	m	class:elevator
 people	floor.js	/^  people(){$/;"	m	class:floor
 removePassengersForFloor	elevator.js	/^  removePassengersForFloor(floor){$/;"	m	class:elevator
-test	main.js	/^test = new eventLoop(1,2,1);$/;"	v
+test	main.js	/^test = new EventLoop(1,2,1);$/;"	v

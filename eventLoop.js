@@ -1,7 +1,10 @@
+var Building = require('./building.js');
+
 class eventLoop {
-  // constructor id -> floors -> shafts -> void
-  constructor(id, floors, shafts){
-    this._building = new Building("main", floors, shafts);
+  // constructor id -> floors -> elevators -> void
+  constructor(id, floors, elevators){
+    this.id = id;
+    this._building = new Building("main", floors, elevators);
   }
   //next :: boolean -> void
   next(displayState){
@@ -41,12 +44,6 @@ class eventLoop {
     }
   }
 }
-
-
-
-
-
-
-
+module.exports.eventLoop = eventLoop;
 
 
