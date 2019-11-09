@@ -1,13 +1,13 @@
 class Building {
   // constructor :: id -> int -> int -> void
-  constructor(id, floors, shafts){
+  constructor(id, floors, elevators){
     this._floors = []; // :: [person]
-    this._shafts = []; // :: [shaft]
+    this._elevators = []; // :: [shaft]
     for (let i = 0; i < floors;i++){
       this._floors.push(new floor(i));
     }
-    for (let i = 0; i < shafts: i++){
-      this._shafts.push(new Shaft);
+    for (let i = 0; i < elevators: i++){
+      this._elevators.push(new Shaft);
     }
   }
   
@@ -26,23 +26,23 @@ class Building {
   }
 
   getNumberOfShafts(){
-    return this._shafts.length;
+    return this._elevators.length;
   }
 
   get floors(){
     return this._floors;
   }
 
-  get shafts(){
-    return this._shafts;
+  get elevators(){
+    return this._elevators;
   }
 
   set floors(floors){
     this._floors = floors;
   }
 
-  set shafts(shafts){
-    this._shafts = floors;
+  set elevators(elevators){
+    this._elevators = floors;
   }
 
   addPerson(currentFloor, desiredFloor){
@@ -53,7 +53,7 @@ class Building {
     for (let i in building.floors){
       for (let j in i.people){
         if (!j.hasElevator){
-          findCorrectElevator(i,j,building.shafts);
+          findCorrectElevator(i,j,building.elevators);
         }
       }
     }
@@ -61,22 +61,39 @@ class Building {
 
   findCorrectElevator(floor, person, elevators){
     availableElevators = [];
+    emptyElevators = [];
+    occupiedElevators = [];
     for (let i in building.elevators){
       if(i.isActive){
         availableElevators.push(i);
       }
     }
 
-    //list of available elevators with people and
-    //list of available elevators without people
     for (let i in availableElevators){
-      if(i.onTheWay(floor){
-        person.elevator = i;
-        i.addPickup(floor)
+      if(i.passengers.length > 0){
+        occupiedElevators.push(i);
       }
-      if(
-
-
-
-
+      else{
+        emptyElevators.push(i);
+      }
+    }
+    let closestElevator;
+    let closestElevatorDistance = 99999999999;
+    for (let i in occupiedElevators){
+      if (i.onTheWay(floor)){
+        if(Math.abs(i.currentFloor-floor) < closestElevatorDistance){
+          closestElevator = i;
+          closestElevatorDistance = Math.abs(i.currentFloor-floor);
+        }
+      }
+    }
+    if(!closestElevator){
+      for (let i in empytElevators){
+        if(Math.abs(i.currentFloor-floor) < closestElevatorDistance){
+          closestElevator = i;
+          closestElevatorDistance = Math.abs(i.currentFloor-floor);
+        }
+      }
+    }
+  }
 }
