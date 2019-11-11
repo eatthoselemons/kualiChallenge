@@ -1,6 +1,6 @@
-var Elevator = require('./elevator.js');
-var Floor = require('./floor.js');
-var Person = require('./person.js');
+var {Elevator} = require('./elevator.js');
+var {Floor} = require('./floor.js');
+var {Person} = require('./person.js');
 
 
 class Building {
@@ -50,7 +50,7 @@ class Building {
     this._elevators = floors;
   }
 
-  addPerson(currentFloor, desiredFloor){
+  addPersonToFloor(currentFloor, desiredFloor){
     this._floors[currentFloor].push(new Person(desiredFloor));
   }
 
@@ -73,7 +73,6 @@ class Building {
         availableElevators.push(i);
       }
     }
-
     for (let i in availableElevators){
       if(i.passengers.length > 0){
         occupiedElevators.push(i);
@@ -102,3 +101,4 @@ class Building {
     }
   }
 }
+module.exports.Building = Building;

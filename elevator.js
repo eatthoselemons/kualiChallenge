@@ -1,4 +1,4 @@
-class elevator {
+class Elevator {
   //constructor :: id -> void
   constructor(id){
     this.id = id;
@@ -128,4 +128,4 @@ class elevator {
     }
   }
 }
-
+module.exports.Elevator = Elevator;

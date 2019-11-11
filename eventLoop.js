@@ -1,6 +1,6 @@
-var Building = require('./building.js');
+let {Building} = require('./building.js');
 
-class eventLoop {
+class EventLoop {
   // constructor id -> floors -> elevators -> void
   constructor(id, floors, elevators){
     this.id = id;
@@ -44,6 +44,4 @@ class eventLoop {
     }
   }
 }
-module.exports.eventLoop = eventLoop;
-
-
+module.exports.EventLoop = EventLoop;

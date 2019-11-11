@@ -32,3 +32,4 @@ class Person {
     return this._hasElevator;
   }
 }
+module.exports.Person = Person;

@@ -1,4 +1,4 @@
-class floor {
+class Floor {
   constructor(id, floorNumber){
     this.id = id;
     this._floorNumber = floorNumber;
@@ -12,6 +12,5 @@ class floor {
   people(){
     return this._people;
   }
-
-
 }
+module.exports.Floor = Floor;
