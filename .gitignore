@@ -1,5 +1,7 @@
 tags
 tags.lock
+tags.temp
 package-lock.json
 node-modules
+.babelrc
 
