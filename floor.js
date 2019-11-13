@@ -1,3 +1,5 @@
+let {Person} = require('./person.js');
+
 class Floor {
   constructor(id, floorNumber){
     this.id = id;

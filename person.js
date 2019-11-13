@@ -3,7 +3,7 @@ class Person {
   constructor(id, desiredFloor){
     this.id = id;
     this._desiredFloor = desiredFloor; //:: int
-    this._requestedElevator = False; //:: boolean
+    this._requestedElevator = false; //:: boolean
     this._hasElevator = false; //:: boolean
   }
 

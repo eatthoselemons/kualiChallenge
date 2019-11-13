@@ -11,6 +11,7 @@ class EventLoop {
       this._building.addPeopleDestinationsToElevators();
     
     for (let i of this._building.elevators){
+      console.log(i);
       dropOffOrMove(i);
     }
     if (displayState){
@@ -28,7 +29,9 @@ class EventLoop {
     }
   }
 
-
+  get building(){
+    return this._building;
+  }
 
   dropOffOrMove(elevator){
     if(elevator.destinations[0] == elevator.currentFloor){

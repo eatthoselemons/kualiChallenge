@@ -17,7 +17,7 @@ class Building {
   }
   
   addPeopleDestinationsToElevators(building){
-    for (let i in building.floor){
+    for (let i in this.floors){
       for (let j in i.people){
         if (!j.hasElevator){
           addToCorrectElevator(j);
@@ -51,7 +51,7 @@ class Building {
   }
 
   addPersonToFloor(currentFloor, desiredFloor){
-    this._floors[currentFloor].push(new Person(desiredFloor));
+    this._floors[currentFloor].addPerson(desiredFloor);
   }
 
   addToCorrectElevator(building){
