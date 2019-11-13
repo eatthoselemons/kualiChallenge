@@ -12,10 +12,10 @@ class EventLoop {
     
     for (let i of this._building.elevators){
       console.log(i);
-      dropOffOrMove(i);
+      this.dropOffOrMove(i);
     }
     if (displayState){
-      displayCurrentBuildingState(this._building);
+      this.displayCurrentBuildingState(this._building);
     }
   }
 

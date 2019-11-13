@@ -124,7 +124,7 @@ class Elevator {
       moveUp();
     }
     else{
-      moveDown();
+      this.moveDown();
     }
   }
 }
